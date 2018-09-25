@@ -5,16 +5,18 @@ from collections import defaultdict
 # Ignore warnings about set_value being deprecated.
 warnings.filterwarnings("ignore")
 
-COLUMNS = ['west', 'north', 'east', 'south', 'explored']
+COLUMNS = ['west', 'north', 'east', 'south', 'tshape', 'tcolor', 'robot', 'explored']
+# Note that the default value is always last
 ALLOWED_VALUES = defaultdict(lambda: [True, False])
-DEFAULT_VALUES = defaultdict(lambda: False)
+ALLOWED_VALUES['tshape'] = ['circle', 'triangle', 'square', 'none']
+ALLOWED_VALUES['tcolor'] = ['red', 'green' 'blue', 'none']
 
 def empty_maze(rows, cols):
   # Generate an empty maze
   num_cells = rows * cols
   empty_maze = {}
   for col in COLUMNS:
-    empty_maze[col] = [DEFAULT_VALUES[col]] * num_cells
+    empty_maze[col] = [ALLOWED_VALUES[col][-1]] * num_cells
   # Cells are referenced by an index of the form (row, col)
   return pd.DataFrame(empty_maze, index=itertools.product(xrange(rows), xrange(cols)), columns=COLUMNS)
 

@@ -1,7 +1,7 @@
 import pandas as pd
 import webbrowser, os
 # Prevent cell truncating when creating the HTML table
-pd.set_option('display.max_colwidth', -1)
+pd.set_option('display.max_colwidth', 1)
 
 class View():
   def __init__(self, rows, cols, open_browser=False, refresh_rate=1, default_sprite='./sprites/unexplored.jpg'):
@@ -22,5 +22,5 @@ class View():
     # Render the sprite layout as an HTML document
     with open('maze.html', 'w') as maze_html:
       # The meta tag causes the browser to automatically refresh the page
-      maze_html.write('<meta http-equiv="refresh" content="%d"/>\n' % self._refresh_rate)
+      maze_html.write('<meta http-equiv="refresh" content="%.2f"/>\n' % self._refresh_rate)
       self._sprite_layout.to_html(maze_html, escape=False, header=False, index=False, border=0)
