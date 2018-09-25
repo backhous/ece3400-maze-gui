@@ -45,12 +45,12 @@ reason, you do not not need to inform the GUI about the absence of walls or the
 absence of treasures, etc. Note that capitalization does not matter. The GUI will
 treat all messages as lowercase.
 
-|Parameter   |Allowed Values   |Default Value   |
-|---|---|---|
-|west   |True, False   |False   |
-|north   |True, False   |False   |
-|east   |True, False   |False   |
-|south   |True, False   |False   |
-|robot   |True, False   |False   |
-|tshape   |Circle, Triangle, Square, None   |None   |
-|tcolor   |Circle, Triangle, Square, None   |None   |
+|Parameter   |Allowed Values   |Default Value   |Description|
+|---|---|---|---|
+|west   |True, False   |False   |Is a wall to the west?|
+|north   |True, False   |False   |Is a wall to the north?|
+|east   |True, False   |False   |Is a wall to the east?|
+|south   |True, False   |False   |Is a wall to the south?|
+|robot   |True, False   |False   |Is another robot present?|
+|tshape   |Circle, Triangle, Square, None   |None   |What shape treasure is present?|
+|tcolor   |Red, Green, Blue, None   |None   |What color treasure is present?|
