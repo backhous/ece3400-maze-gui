@@ -1,5 +1,5 @@
 import serial, argparse
-from controller import Controller
+from gui.controller import Controller
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
@@ -11,14 +11,17 @@ if __name__ == '__main__':
   parser.add_argument('--cols', type=int, default=3, help='Number of cols in the maze.')
   args = parser.parse_args()
 
-  # Setup the GUI controller
-  controller = Controller(args.rows, args.cols)
-
-  # Setup the serial connection to the Arduino
-  with serial.Serial(args.port, args.baudrate) as ser:
-    while True:
-      # Note: readline blocks.. If you do not terminate your message
-      # with a newline, this will block forever...
-      msg = ser.readline()
-      print 'Received message: %s' % msg.strip()
-      controller.handle_msg(msg)
+  try:
+    # Setup the serial connection to the Arduino
+    with serial.Serial(args.port, args.baudrate) as ser:
+      # Setup the GUI controller
+      controller = Controller(args.rows, args.cols)
+      while True:
+        # Note: readline blocks.. If you do not terminate your message
+        # with a newline, this will block forever...
+        msg = ser.readline()
+        print 'Received message: %s' % msg.strip()
+        controller.handle_msg(msg)
+  except serial.serialutil.SerialException as e:
+    print 'Could not connect to the Arduino.'
+    print e
