@@ -2,12 +2,9 @@
 
 ## Serial API
 
-### Message Format:
+For the third lab, you will incorporate a second Arduino into your system.  For clarity, we will refer to this as the Base Station Arduino and to the Arduino on your robot as the Robot Arduino. The Robot Arduino will communicate wirelessly with the Base Station Arduino while your robot explores a maze, sending information about the maze's layout and contents. The Base Station Arduino will communicate with the Maze GUI over a serial connection mediated by a USB cable connecting the Base Station Arduino to a PC running the Maze GUI. This document describes the interface you must implement so that the Maze GUI will understand the messages sent by the Base State Arduino.
 
-Your "base station" Arduino will communicate with the Maze GUI over a serial 
-connection mediated by the USB cable used to connect your Arduino to the PC 
-running the Maze GUI, just like the serial connection used to communicate 
-between your Arduino and the Arduino IDE.
+### Message Format:
 
 The Arduino can send a message to the GUI just as it prints data to the 
 serial monitor of the Arduino IDE. For example:
