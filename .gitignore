@@ -1,3 +1,7 @@
+# Ignore mazes
+*.html
+
+# For Mac OS X
 .DS_Store
 
 # Byte-compiled / optimized / DLL files

@@ -9,17 +9,17 @@ For the third lab, you will incorporate a second Arduino into your system.  For 
 The Arduino can send a message to the GUI just as it prints data to the 
 serial monitor of the Arduino IDE. For example:
 
-`Serial.println("0,0,left_wall=true,top_wall=top")`
+`Serial.println("0,0,west=true,north=true")`
 
 This message means that at the maze coordinates `(0, 0)` there is a wall to the
-left and a wall to the top. Maze positions are referenced using 
+west (left) and a wall to the north (top). Maze positions are referenced using 
 *raster coordinates*, so the upper left corner of the maze has coordinates
 `(0, 0)`.
 
 ___The GUI will only process a message that ends with a newline.___ For this
 reason, you should use `Serial.println` not `Serial.print` to send messages. 
-However, the latter could be used to send multiple messages to the base station 
-with a single command if you insert a new line between the messages manually.
+However, the latter can be used as long as you manually insert a newline `\n` at
+end of your message.
 
 You can include as few as zero or infinitely many (not recommended for 
 performance reasons) parameters after specifiying the row and column coordinates 
@@ -27,27 +27,30 @@ at the beginning of the message.
 
 All of the following are legal messages:
 
-`1,0,top_wall=true`
+`1,0,north=true`
 
-`2,3,left_wall=false,top_wall=true,bottom_wall=false`
+`2,3,west=false,north=true,south=false`
 
-`0,0,left_wall=false,left_wall=true`
+`0,0,west=false,west=true`
 
-Note that the last message sets the value of `left_wall` twice. The GUI will only
-consider the *final* value of `left_wall` send in the message, so `true` in this 
+Note that the last message sets the value of `west` twice. The GUI will only
+consider the *final* value of `west` sent in the message. `true`, in this 
 case.
 
 ### Parameters:
-There are eight parameters you can set for each cell in the maze. The possible
-values for each parameter is noted in brackets. The default value for a cell is 
-the last value in brackets. All cells in the maze start with the default value 
-for the given parameter. For this reason, you do not not need to inform the GUI
-about the absence of walls or the absence of treasures.
+There are eight parameters you can set for each cell in the maze. Each parameter
+has a limited set of allowed values. The default value is show in the following 
+table. All cells start with the default value set for each parameter. For this 
+reason, you do not not need to inform the GUI about the absence of walls or the 
+absence of treasures, etc. Note that capitalization does not matter. The GUI will
+treat all messages as lowercase.
 
-- `left_wall [True, alse]`
-- `top_wall [True, False]`
-- `right_wall [True, False]`
-- `bottom_wall [True, False]`
-- `other_robot [True, False]`
-- `treasure_shape [Circle, Triangle, Square, None]`
-- `teasure_color [Blue, Green, Red, None]`
+|Parameter   |Allowed Values   |Default Value   |
+|---|---|---|
+|west   |True, False   |False   |
+|north   |True, False   |False   |
+|east   |True, False   |False   |
+|south   |True, False   |False   |
+|robot   |True, False   |False   |
+|tshape   |Circle, Triangle, Square, None   |None   |
+|tcolor   |Circle, Triangle, Square, None   |None   |
