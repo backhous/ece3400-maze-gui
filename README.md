@@ -1,6 +1,6 @@
 # ECE 3400: Maze GUI
 
-![GUI](https://github.com/{user}/{repo}/blob/master/maze.gif)
+![GUI](./maze.gif)
 
 ## Serial API
 
