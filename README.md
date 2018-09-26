@@ -1,5 +1,7 @@
 # ECE 3400: Maze GUI
 
+![GUI](https://github.com/{user}/{repo}/raw/master/maze.gif)
+
 ## Serial API
 
 For the third lab, you will incorporate a second Arduino into your system.  For clarity, we will refer to this as the Base Station Arduino and to the Arduino on your robot as the Robot Arduino. The Robot Arduino will communicate wirelessly with the Base Station Arduino while your robot explores a maze, sending information about the maze's layout and contents. The Base Station Arduino will communicate with the Maze GUI over a serial connection mediated by a USB cable connecting the Base Station Arduino to a PC running the Maze GUI. This document describes the interface you must implement so that the Maze GUI will understand the messages sent by the Base State Arduino.
