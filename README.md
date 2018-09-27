@@ -2,7 +2,7 @@
 
 ![GUI](./maze.gif)
 
-## Serial API
+## ECE 3400 Maze GUI
 
 For the third lab, you will incorporate a second Arduino into your system. This will allow your robot to send information as it explores to a graphical user interface (GUI) which will then display to you what your robot learns about the maze.
 
