@@ -28,7 +28,7 @@ class Model():
     # Only set an attribute if there is a column for it
     if attr in self._maze:
       # Before setting the robot's current location, forget the last set location
-      if attr == 'iamhere':
+      if attr == 'iamhere' and val:
         self._maze['iamhere'] = False
       self._maze.set_value((row, col), attr, val)
 
