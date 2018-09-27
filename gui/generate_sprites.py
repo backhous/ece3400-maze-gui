@@ -21,7 +21,10 @@ def draw_walls(sprite, west, north, east, south, wall_color=(0, 255, 255)):
 def draw_treasure(sprite, tshape, tcolor):
   return sprite
 
-def draw_robot(sprite, robot):
+def draw_robot(sprite, iamhere, robot_color=(0, 0, 255)):
+  height, width, _ = sprite.shape
+  if iamhere:
+    cv2.circle(sprite, (height/2, width/2), min(height, width)/4, robot_color, -1)
   return sprite
 
 def name_sprite(combo):
@@ -57,7 +60,7 @@ if __name__ == '__main__':
     
     # TODO: Implement drawing robots
     sprite = draw_robot(sprite,
-      robot=state_combo[COLUMNS.index('robot')])
+      iamhere=state_combo[COLUMNS.index('iamhere')])
     
     sprite_name = name_sprite(state_combo)
     cv2.imwrite(os.path.join(args.out_dir, '%s.jpg' % sprite_name), sprite)

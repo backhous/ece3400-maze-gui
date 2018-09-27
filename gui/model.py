@@ -5,7 +5,7 @@ from collections import defaultdict
 # Ignore warnings about set_value being deprecated.
 warnings.filterwarnings("ignore")
 
-COLUMNS = ['west', 'north', 'east', 'south', 'tshape', 'tcolor', 'robot', 'explored']
+COLUMNS = ['iamhere', 'west', 'north', 'east', 'south', 'tshape', 'tcolor', 'robot', 'explored']
 # Note that the default value is always last
 ALLOWED_VALUES = defaultdict(lambda: [True, False])
 ALLOWED_VALUES['tshape'] = ['circle', 'triangle', 'square', 'none']
@@ -27,9 +27,12 @@ class Model():
   def _set_cell_attr(self, row, col, attr, val):
     # Only set an attribute if there is a column for it
     if attr in self._maze:
+      # Before setting the robot's current location, forget the last set location
+      if attr == 'iamhere':
+        self._maze['iamhere'] = False
       self._maze.set_value((row, col), attr, val)
 
-  def _get_cell_state(self, row, col):
+  def get_cell_state(self, row, col):
     return self._maze.loc[[(row, col)]].to_dict('records')[0]
 
   def update_cell(self, row, col, **kwargs):
@@ -37,4 +40,4 @@ class Model():
     self._set_cell_attr(row, col, 'explored', True)
     for attr, val in kwargs.items():
       self._set_cell_attr(row, col, attr, val)
-    return self._get_cell_state(row, col)
+    return self.get_cell_state(row, col)

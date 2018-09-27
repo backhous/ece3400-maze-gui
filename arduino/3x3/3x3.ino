@@ -16,11 +16,11 @@ void loop() {
   delay(1000);
   Serial.println("0,2,north=true,east=true");
   delay(1000);
-  Serial.println("1,0,west=true,north=true");
+  Serial.println("1,2,east=true,south=true");
   delay(1000);
   Serial.println("1,1,north=true,south=true");
   delay(1000);
-  Serial.println("1,2,east=true,south=true");
+  Serial.println("1,0,west=true,north=true");
   delay(1000);
   Serial.println("2,0,south=true,west=true");
   delay(1000);
