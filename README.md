@@ -12,7 +12,7 @@ This document describes the interface you must implement so that the Maze GUI wi
 
 ### Installation / Setup:
 
-You will need Python installed on your system to use the maze GUI. You will also need a Python package manager called `pip`.
+You will need Python 2.7 installed on your system to use the maze GUI. You will also need a Python package manager called `pip`.
 
 - [Instructions for installing these on Windows.](https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation)
 - [Instructions for installing these on Mac OS X.](https://stackoverflow.com/questions/17271319/how-do-i-install-pip-on-macos-or-os-x)
