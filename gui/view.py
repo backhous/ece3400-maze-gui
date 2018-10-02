@@ -23,4 +23,4 @@ class View():
     with open('maze.html', 'w') as maze_html:
       # The meta tag causes the browser to automatically refresh the page
       maze_html.write('<meta http-equiv="refresh" content="%.2f"/>\n' % self._refresh_rate)
-      self._sprite_layout.to_html(maze_html, escape=False, header=False, index=False, border=0)
+      self._sprite_layout.to_html(maze_html, escape=False, header=False, index=False)
