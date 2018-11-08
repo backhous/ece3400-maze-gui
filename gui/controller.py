@@ -24,6 +24,8 @@ class Controller():
     self._view.update_cell(row, col, sprite)
 
   def handle_msg(self, msg):
+    # Drop white space
+    msg = msg.strip()
     # For simplicity, all messages are handled in lower-case
     msg = msg.lower()
     # reset is a special message that sets the GUI back to its intial state
@@ -36,9 +38,9 @@ class Controller():
       # Structure the tokens to be passed to the model
       row, col = int(tokens[0]), int(tokens[1])
       attrs = {'iamhere' : True}
-      # iamhere=true is automatically added to the message to save you from 
+      # iamhere=true is automatically added to the message to save you from
       # sending this with your messages; if you are sending information about
-      # some cell other than where you are located currently, you MUST send 
+      # some cell other than where you are located currently, you MUST send
       # iamhere=false
       for t in tokens[2:]:
         attr, val = t.split('=')
@@ -50,7 +52,7 @@ class Controller():
       if row < self.rows and col < self.cols and row >= 0 and col >= 0:
         # Update the model and get the new state of the cell
         self._update_model(row, col, attrs)
-        # Update the view with the full maze state; this is necessary now that 
+        # Update the view with the full maze state; this is necessary now that
         # we are tracking dynamic state (robot position)
         for r in xrange(self.rows):
           for c in xrange(self.cols):
