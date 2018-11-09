@@ -19,12 +19,19 @@ def draw_walls(sprite, west, north, east, south, wall_color=(0, 255, 255)):
   return sprite
 
 def draw_treasure(sprite, tshape, tcolor):
+  height, width, _ = sprite.shape
+  colors = {
+    'red': (0, 0, 255),
+    'blue': (255, 0, 0)
+  }
+  if tshape is not 'none' and tcolor is not 'none':
+    cv2.putText(sprite, tshape.upper()[0], (width/10, height - height/7), cv2.FONT_HERSHEY_SIMPLEX, 1, colors[tcolor], 2)
   return sprite
 
-def draw_robot(sprite, iamhere, robot_color=(0, 0, 255)):
+def draw_robot(sprite, iamhere, robot_color=(255, 255, 255)):
   height, width, _ = sprite.shape
   if iamhere:
-    cv2.circle(sprite, (height/2, width/2), min(height, width)/4, robot_color, -1)
+    cv2.circle(sprite, (width/2, height/2), min(height, width)/8, robot_color, -1)
   return sprite
 
 def name_sprite(combo):
@@ -46,21 +53,21 @@ if __name__ == '__main__':
 
   for state_combo in state_combinations:
     sprite = create_empty_sprite(args.height, args.width)
-    
-    sprite = draw_walls(sprite, 
+
+    sprite = draw_walls(sprite,
       west=state_combo[COLUMNS.index('west')],
       north=state_combo[COLUMNS.index('north')],
       east=state_combo[COLUMNS.index('east')],
       south=state_combo[COLUMNS.index('south')])
-    
+
     # TODO: Implement drawing treasures
     sprite = draw_treasure(sprite,
       tshape=state_combo[COLUMNS.index('tshape')],
       tcolor=state_combo[COLUMNS.index('tcolor')])
-    
+
     # TODO: Implement drawing robots
     sprite = draw_robot(sprite,
       iamhere=state_combo[COLUMNS.index('iamhere')])
-    
+
     sprite_name = name_sprite(state_combo)
     cv2.imwrite(os.path.join(args.out_dir, '%s.jpg' % sprite_name), sprite)

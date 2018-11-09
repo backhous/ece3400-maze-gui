@@ -8,8 +8,8 @@ warnings.filterwarnings("ignore")
 COLUMNS = ['iamhere', 'west', 'north', 'east', 'south', 'tshape', 'tcolor', 'robot', 'explored']
 # Note that the default value is always last
 ALLOWED_VALUES = defaultdict(lambda: [True, False])
-ALLOWED_VALUES['tshape'] = ['circle', 'triangle', 'square', 'none']
-ALLOWED_VALUES['tcolor'] = ['red', 'green', 'blue', 'none']
+ALLOWED_VALUES['tshape'] = ['circle', 'triangle', 'diamond', 'none']
+ALLOWED_VALUES['tcolor'] = ['red', 'blue', 'none']
 
 def empty_maze(rows, cols):
   # Generate an empty maze
