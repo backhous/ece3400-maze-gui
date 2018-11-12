@@ -57,6 +57,8 @@ class Controller():
         for r in xrange(self.rows):
           for c in xrange(self.cols):
             self._update_view(r, c, self._model.get_cell_state(r, c))
+        # Render the updated view
+        self._view.render()
       else:
         print 'Message ignored: Illegal maze coordinates: (%d, %d).' % (row, col)
     else:
