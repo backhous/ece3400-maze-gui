@@ -5,7 +5,7 @@ from shutil import copyfile
 pd.set_option('display.max_colwidth', 1)
 
 class View():
-  def __init__(self, rows, cols, open_browser=False, refresh_rate=0, default_sprite='./sprites/unexplored.jpg'):
+  def __init__(self, rows, cols, open_browser=False, refresh_rate=0.5, default_sprite='./sprites/unexplored.jpg'):
     self._refresh_rate = refresh_rate
     self._sprite_layout = pd.DataFrame([self._add_tag(default_sprite) for c in xrange(cols)] for r in xrange(rows))
     self._render()

@@ -3,7 +3,7 @@ from model import COLUMNS
 from view import View
 import os, re
 # Regular expression to check for legal message formatting
-LEGAL_MSG = re.compile("^([0-9]+,[0-9]+,)([a-z]+=[a-z]+,?){0,}")
+LEGAL_MSG = re.compile("^([0-9]+,[0-9]+)(,[a-z]+=[a-z]+,?){0,}")
 
 class Controller():
   def __init__(self, rows, cols):
