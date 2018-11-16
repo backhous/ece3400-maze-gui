@@ -26,7 +26,7 @@ def draw_treasure(sprite, tshape, tcolor):
     'none': (255, 255, 255)
   }
   if tshape is not 'none' or tcolor is not 'none':
-    cv2.putText(sprite, tshape.upper()[0] if tshape is not 'none' else '*', (width/10, height - height/7), cv2.FONT_HERSHEY_SIMPLEX, 1, colors[tcolor], 2)
+    cv2.putText(sprite, tshape.upper()[0] if tshape is not 'none' else '?', (width/10, height - height/7), cv2.FONT_HERSHEY_SIMPLEX, 1, colors[tcolor], 2)
   return sprite
 
 def draw_robot(sprite, iamhere, robot_color=(255, 255, 255)):
