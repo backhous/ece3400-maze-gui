@@ -24,5 +24,5 @@ class View():
       # The meta tag causes the browser to automatically refresh the page
       self._sprite_layout.to_html(maze_html, escape=False, header=False, index=False)
     # Render the HTML file by opening it with the browser
-    webbrowser.open('file://' + os.path.realpath('./maze.html'), autoraise=False)
+    webbrowser.open('file://' + os.path.realpath('./maze.html'), new=0, autoraise=False)
     print 'Render called.'
